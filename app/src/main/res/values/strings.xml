@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Feed Explorer</string>
+    <string name="directory_title">Professionals Directory</string>
+    <string name="details_title">Professional Detail</string>
+    <string name="error_title">Something went wrong</string>
+    <string name="retry_button">Try Again</string>
+    <string name="connection_error">Please check your internet connection and try again.</string>
+</resources>
