@@ -41,7 +41,7 @@ This is a production-ready Android application demonstrating modern development 
 Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/professional-directory-android.git
+git clone https://github.com/IGonzB/FeedExplorer.git
 ```
 
 Open in Android Studio: (Ladybug | 2024.2.1 or newer recommended).
