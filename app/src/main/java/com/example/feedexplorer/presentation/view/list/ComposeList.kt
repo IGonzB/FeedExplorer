@@ -47,13 +47,28 @@ import com.example.feedexplorer.R
 import com.example.feedexplorer.domain.model.Professional
 import com.example.feedexplorer.domain.model.Resource
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ProfessionalListScreen(
     viewModel: ListViewModel = hiltViewModel(),
     onItemClick: (Professional) -> Unit
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
+
+    // The "Screen" handles the state and logic
+    ProfessionalListContent(
+        state = state,
+        onItemClick = onItemClick,
+        onRetry = { viewModel.fetchProfessionals() }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ProfessionalListContent(
+    state: Resource<List<Professional>>,
+    onItemClick: (Professional) -> Unit,
+    onRetry: () -> Unit
+) {
     val scrollBehavior = TopAppBarDefaults.exitUntilCollapsedScrollBehavior()
 
     Scaffold(
@@ -76,9 +91,11 @@ fun ProfessionalListScreen(
                     // Shimmer or generic loader
                     CircularProgressIndicator(Modifier.align(Alignment.Center))
                 }
+
                 is Resource.Error -> {
-                    ErrorView(result.message) { viewModel.fetchProfessionals() }
+                    ErrorView(result.message) { onRetry }
                 }
+
                 is Resource.Success -> {
                     LazyColumn(
                         contentPadding = PaddingValues(bottom = 16.dp),

@@ -48,6 +48,21 @@ fun ProfessionalDetailScreen(
 ) {
     val state by viewModel.uiState.collectAsStateWithLifecycle()
 
+    // The "Screen" handles the state and logic
+    ProfessionalDetailContent(
+        state = state,
+        professionalId = professionalId,
+        onBackClick = onBackClick
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun ProfessionalDetailContent(
+    state: Resource<Professional>,
+    professionalId: String,
+    onBackClick: () -> Unit
+) {
     Scaffold(
         topBar = {
             TopAppBar(
@@ -68,14 +83,14 @@ fun ProfessionalDetailScreen(
             when (val result = state) {
                 is Resource.Loading -> CircularProgressIndicator(Modifier.align(Alignment.Center))
                 is Resource.Error -> Text(result.message, Modifier.align(Alignment.Center))
-                is Resource.Success -> ProfessionalDetailContent(result.data, professionalId)
+                is Resource.Success -> DetailContent(result.data, professionalId)
             }
         }
     }
 }
 
 @Composable
-private fun ProfessionalDetailContent(item: Professional, professionalId: String) {
+fun DetailContent(item: Professional, professionalId: String) {
     Column(
         modifier = Modifier
             .fillMaxSize()

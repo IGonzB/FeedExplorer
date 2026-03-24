@@ -44,6 +44,8 @@ android {
 
 dependencies {
     implementation(libs.androidx.navigation.runtime.ktx)
+    implementation(libs.androidx.compose.ui.test)
+    implementation(libs.ui.test.junit4)
     ksp(libs.hilt.compiler)
     implementation(libs.hilt.android)
     implementation(libs.retrofit)
@@ -61,7 +63,16 @@ dependencies {
     implementation(libs.androidx.hilt.navigation.compose)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.material.icons.extended)
+
+
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    androidTestImplementation(libs.androidx.ui.test.junit4)
+    debugImplementation(libs.androidx.ui.test.manifest)
+    testImplementation(libs.bundles.mockk)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.kotlinx.coroutines.test)
+    androidTestImplementation(libs.bundles.mockk)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
