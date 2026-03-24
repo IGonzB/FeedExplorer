@@ -36,9 +36,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.feedexplorer.R
-import com.example.feedexplorer.data.dto.ProfessionalDto
-import com.example.feedexplorer.domain.model.Resource
 import com.example.feedexplorer.domain.model.Professional
+import com.example.feedexplorer.domain.model.Resource
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
